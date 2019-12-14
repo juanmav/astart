@@ -1,0 +1,13 @@
+database.sqlite
+/runs/*.json
+/migrations/*.sql
+!/migrations/001-init.sql
+/node_modules
+/raw/*.csv
+/raw/nodes.bin
+/raw/nodes.json
+nodes.bin
+nodes.json
+package-lock.json
+.idea
+
