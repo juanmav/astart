@@ -11,14 +11,14 @@ async function AStarPath(startId, endId, nodeBuilder, progressWrite){
 
     const openSet = new OpenSet();
     let currentNode = startNode;
+
     do {
+        // Progress writer
         Math.random() <= 0.001 ? progressWrite(currentNode) : null;
         // Normal case put currentNode from open to closed
         currentNode.closed = true;
         // Process its neighbors.
-        //perf.start('vecinos');
         const neighbors = nodeBuilder.getNeighbors(currentNode);
-        //perf.stop('vecinos');
 
         neighbors.forEach(neighbor =>{
             if (!neighbor.closed) {
@@ -39,10 +39,10 @@ async function AStarPath(startId, endId, nodeBuilder, progressWrite){
                     neighbor.setGCost(currentNode);
                     openSet.float(openSet.indexOf(neighbor));
                 } else {
-                    // console.log('Nor pristine nor better path');
+                    //console.log('Nor pristine nor better path');
                 }
             } else {
-                //console.log('De node was already closed');
+                //console.log('the node was already closed');
             }
         });
         currentNode = openSet.pop();
