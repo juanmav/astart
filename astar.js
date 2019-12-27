@@ -1,10 +1,17 @@
 const OpenSet = require('./openset');
 const { pathTo } = require('./path-geojson-utils');
 
-async function AStarPath(startId, endId, nodeBuilder, progressWrite){
+/**
+ * @param startId integer start node id
+ * @param endId integer end node id
+ * @param nodeFactory NodeFactory object
+ * @param progressWrite write progress function
+ * */
 
-    let startNode = nodeBuilder.getNode(startId);
-    let endNode = nodeBuilder.getNode(endId);
+function AStarPath(startId, endId, nodeFactory, progressWrite){
+
+    let startNode = nodeFactory.getNode(startId);
+    let endNode = nodeFactory.getNode(endId);
 
     //console.log(startNode.setGCost(startNode));
     //console.log(startNode.setHCost(endNode));
@@ -18,7 +25,7 @@ async function AStarPath(startId, endId, nodeBuilder, progressWrite){
         // Normal case put currentNode from open to closed
         currentNode.closed = true;
         // Process its neighbors.
-        const neighbors = nodeBuilder.getNeighbors(currentNode);
+        const neighbors = nodeFactory.getNeighbors(currentNode);
 
         neighbors.forEach(neighbor =>{
             if (!neighbor.closed) {

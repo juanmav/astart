@@ -1,7 +1,62 @@
 # A* implementation in NodeJs
 
+![Barcelona-Sevilla-path](Barcelona-servilla-nice-net-animated.gif)
+
+Two implementations: 
+
 - Full in memory graph loaded from file
 - Partial in memory graph loaded from sqlite db.
+
+## Basic usage
+Loading DB
+Total Time:0.5204909999999999
+Start node to UAB CRM
+Total Time:3689.446746
+Loading bin File
+Total Time:136651.5715
+Start node to Sevilla
+Total Time:4539.150839
+
+```javascript
+
+/**
+ * @param startId integer start node id
+ * @param endId integer end node id
+ * @param nodeFactory NodeFactory object
+ * @param progressWrite write progress function
+ * */
+
+let path = await AStarPath(
+        startNodeId,
+        endNodeId,
+        nodeFactory,
+        progressChecker
+    );
+```
+
+## Full example usage.
+
+Check the index.js file to full example usage.
+
+```shell script
+~/node --max-old-space-size=12288 index.js 
+```
+
+*Output*
+
+```shell script
+Loading DB
+Total Time:0.5204909999999999
+Start node to UAB CRM
+Total Time:3689.446746
+Loading bin File
+Total Time:136651.5715
+Start node to Sevilla
+Total Time:4539.150839
+```
+
+Also check the folder `/runs` there are the result of the calculated paths,
+the `.json` file's content can be copy & paste on [http://geojson.io/](http://geojson.io/)
 
 ## Some processing 
 Take the nodes and ways from main fails and split them into two files.

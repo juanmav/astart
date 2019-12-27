@@ -30,7 +30,7 @@ const Node = require('./node');
     console.log('Start node to UAB CRM');
     perf.start();
     let alternatives = [];
-    let path1 = await AStarPath(
+    let path1 = AStarPath(
         startingNodeId,
         uabCRMNodeId,
         nodeFactoryDB,
@@ -51,7 +51,7 @@ const Node = require('./node');
     console.log('Start node to Sevilla');
     perf.start();
     alternatives = [];
-    let path2 = await AStarPath(
+    let path2 = AStarPath(
         startingNodeId,
         sevillaNodeId,
         nodeFactory,
