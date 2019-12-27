@@ -8,17 +8,7 @@ Two implementations:
 - Partial in memory graph loaded from sqlite db.
 
 ## Basic usage
-Loading DB
-Total Time:0.5204909999999999
-Start node to UAB CRM
-Total Time:3689.446746
-Loading bin File
-Total Time:136651.5715
-Start node to Sevilla
-Total Time:4539.150839
-
 ```javascript
-
 /**
  * @param startId integer start node id
  * @param endId integer end node id
@@ -26,7 +16,7 @@ Total Time:4539.150839
  * @param progressWrite write progress function
  * */
 
-let path = await AStarPath(
+let path = AStarPath(
         startNodeId,
         endNodeId,
         nodeFactory,
